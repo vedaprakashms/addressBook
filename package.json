@@ -2,6 +2,11 @@
   "name": "addressbook",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Vedaprakash M S",
+    "email": "vedaprakash.ms@outlook.com",
+    "url": "https://github.com/vedaprakashms"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -9,7 +14,9 @@
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "postuninstall": "electron-builder install-app-deps",
+    "iconBuilder": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
+    "iconBuilder2": "electron-icon-builder --input=./public/notebook.png --output=build --flatten"
   },
   "main": "background.js",
   "dependencies": {
