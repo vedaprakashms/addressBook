@@ -10,7 +10,25 @@
             text-yellow-200 text-lg
         "
     >
-        <div class="flex justify-center align-middle col-span-11 tiptop">
+        <div
+            class="
+                col-start-1 col-span-1
+                flex
+                justify-start
+                text-gray-50
+                align-middle
+                pl-2
+            "
+        >
+            <img
+                src="../assets/book.svg"
+                height="16"
+                width="20"
+                class="clickto"
+                @click="homepage"
+            />
+        </div>
+        <div class="flex justify-center align-middle col-span-10 tiptop">
             Address Book
         </div>
         <div
@@ -93,6 +111,11 @@ export default {
             } else {
                 win.maximize()
             }
+        },
+        homepage: () => {
+            remote.shell.openExternal(
+                'https://github.com/vedaprakashms/addressBook'
+            )
         },
     },
 }

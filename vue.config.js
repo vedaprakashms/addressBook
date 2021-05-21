@@ -13,11 +13,31 @@ module.exports = {
                     icon: './build/icons',
                 },
                 win: {
-                    target: ['nsis', 'portable', '7z'],
+                    target: [
+                        {
+                            target: 'nsis',
+                            arch: ['x64', 'ia32'],
+                        },
+                        {
+                            target: 'portable',
+                            arch: ['ia32', 'x64'],
+                        },
+                        '7z',
+                    ],
                     icon: './build/icons',
                 },
                 portable: {
                     artifactName: '${productName}-${version}-portable.exe',
+                    splashImage: './public/splash.bmp',
+                },
+                nsis: {
+                    oneClick: false,
+                    perMachine: true,
+                    allowElevation: true,
+                    allowToChangeInstallationDirectory: true,
+                    createDesktopShortcut: true,
+                    createStartMenuShortcut: true,
+                    deleteAppDataOnUninstall: true,
                 },
             },
         },
