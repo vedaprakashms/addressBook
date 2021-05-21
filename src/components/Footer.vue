@@ -19,7 +19,14 @@
                 align-middle
                 pl-2
             "
-        ></div>
+        >
+            <fa
+                :icon="['fab', 'osi']"
+                class="mx-1 mt-1"
+                size="lg"
+                @click="license"
+            />
+        </div>
         <div class="flex justify-center align-middle col-span-10 tiptop">
             Copyright @ 2021, All right Reserved
         </div>
@@ -58,6 +65,11 @@ export default {
         },
         twitter: () => {
             remote.shell.openExternal('https://twitter.com/vedms')
+        },
+        license: () => {
+            remote.shell.openExternal(
+                'https://github.com/vedaprakashms/addressBook/blob/master/LICENSE'
+            )
         },
     },
 }
