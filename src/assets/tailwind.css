@@ -3,3 +3,7 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.inputClass {
+    @apply rounded px-1 py-2 border-0 focus:ring w-full placeholder-gray-400 text-lg text-black font-semibold uppercase;
+}
