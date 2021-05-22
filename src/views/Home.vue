@@ -1,6 +1,6 @@
 <template>
-    <div class="text-5xl text-yellow-100 flex justify-center">
-        This is home page
+    <div class="text-yellow-100 flex justify-center">
+        <h1 class="text-3xl">Address Entry Page</h1>
     </div>
 </template>
 
