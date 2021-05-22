@@ -139,14 +139,14 @@
                         w-full
                         bg-gradient-to-r
                         from-red-500
-                        via-yellow-400
-                        to-green-700
-                        text-gray-900 text-xl
+                        via-green-600
+                        to-yellow-400
+                        text-gray-100 text-xl
                         font-bold
                     "
                     @click="entry"
                 >
-                    Make the Address entry
+                    Add Address
                 </button>
             </div>
         </div>
