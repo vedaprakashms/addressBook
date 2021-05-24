@@ -17,16 +17,19 @@
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="First Name"
+                v-model="address.fname"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Last Name"
+                v-model="address.lname"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder=" Surname"
+                v-model="address.surname"
             />
             <div
                 class="
@@ -44,16 +47,19 @@
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Mobile 1"
+                v-model="address.mobile1"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Mobile 2"
+                v-model="address.Mobile2"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Phone"
+                v-model="address.landline"
             />
             <div
                 class="
@@ -71,53 +77,61 @@
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Door No"
+                v-model="address.doorNo"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="House Name"
+                v-model="address.houseName"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Street / Lane"
+                v-model="address.streetName"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Road"
+                v-model="address.road"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Area"
+                v-model="address.area"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Landmark"
+                v-model="address.landmark"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="City"
+                v-model="address.city"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="State"
-                value="Karnataka"
+                v-model="address.state"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="country"
-                value="India"
+                v-model="address.country"
             />
             <input
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Pincode"
+                v-model="address.pincode"
             />
             <div
                 class="
@@ -156,14 +170,44 @@
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@/components/HelloWorld.vue'
-
+import axios from 'axios'
 export default {
     name: 'Home',
+    data: () => {
+        return {
+            address: {
+                fname: '',
+                lname: '',
+                surname: '',
+                mobile1: null,
+                Mobile2: null,
+                landline: null,
+                doorNo: null,
+                houseName: '',
+                streetName: '',
+                road: '',
+                area: '',
+                landmark: '',
+                city: '',
+                state: 'Karnataka',
+                country: 'India',
+                pincode: null,
+            },
+        }
+    },
     components: {},
     methods: {
-        entry: () => {
-            console.log('Button for data enty clicked')
-            alert('Button for data enty clicked')
+        entry() {
+            var k = this.address
+            console.log(k)
+            axios({
+                url: 'http://localhost:3000/address',
+                method: 'POST',
+                data: this.address,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                },
+            }).then(console.log)
         },
     },
 }

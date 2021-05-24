@@ -1,14 +1,19 @@
-'use strict'
-
 import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
+import path from 'path'
 require('@electron/remote/main').initialize()
 // Scheme must be registered before the app is ready
+// protocol.registerSchemesAsPrivisleged([
+//     { scheme: 'app', privileges: { secure: true, standard: true } },
+// ])
+
 protocol.registerSchemesAsPrivileged([
-    { scheme: 'app', privileges: { secure: true, standard: true } },
+    { scheme: 'scheme1', privileges: { standard: true, secure: true } },
+    { scheme: 'scheme2', privileges: { standard: true, secure: true } },
 ])
+app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors')
 
 async function createWindow() {
     // Create the browser window.
@@ -22,7 +27,10 @@ async function createWindow() {
             nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
             contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
             enableRemoteModule: true,
+            webSecurity: false,
         },
+        // eslint-disable-next-line no-undef
+        icon: path.resolve(__static, 'notebook.png'),
     })
     win.maximize()
     if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -63,6 +71,7 @@ app.on('ready', async () => {
             console.error('Vue Devtools failed to install:', e.toString())
         }
     }
+    require('./express/app')
     createWindow()
 })
 
