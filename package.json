@@ -1,77 +1,77 @@
 {
-  "name": "addressbook",
-  "version": "0.0.2",
-  "private": true,
-  "description": "An applications which can store address in a local instance of mongodb, generate the excel files, Word document & lables for printing.",
-  "author": {
-    "name": "Vedaprakash M S",
-    "email": "vedaprakash.ms@outlook.com",
-    "url": "https://github.com/vedaprakashms"
-  },
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "electron:build": "vue-cli-service electron:build",
-    "electron:serve": "vue-cli-service electron:serve",
-    "iconBuilder": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
-    "iconBuilder2": "electron-icon-builder --input=./public/notebook.png --output=build --flatten",
-    "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
-  },
-  "main": "background.js",
-  "dependencies": {
-    "@electron/remote": "^1.1.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "@fortawesome/free-regular-svg-icons": "^5.15.3",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/vue-fontawesome": "^3.0.0-3",
-    "@tailwindcss/postcss7-compat": "^2.0.2",
-    "autoprefixer": "^9",
-    "axios": "^0.21.1",
-    "core-js": "^3.6.5",
-    "express": "^4.17.1",
-    "jsbarcode": "^3.11.4",
-    "mongodb-client-encryption": "^1.2.3",
-    "mongoose": "^5.12.10",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/eslint-config-prettier": "^6.0.0",
-    "babel-eslint": "^10.1.0",
-    "electron": "^12.0.0",
-    "electron-devtools-installer": "^3.2.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-vue": "^7.0.0",
-    "lint-staged": "^9.5.0",
-    "prettier": "^2.2.1",
-    "sass": "^1.26.5",
-    "sass-loader": "^8.0.2",
-    "stylelint": "^13.13.1",
-    "stylelint-config-standard": "^22.0.0",
-    "vue-cli-plugin-electron-builder": "~2.0.0",
-    "vue-cli-plugin-tailwind": "~2.0.6",
-    "vue-cli-plugin-vuetify": "~2.4.0"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
-  }
+    "name": "addressbook",
+    "version": "0.0.2",
+    "private": true,
+    "description": "An applications which can store address in a local instance of mongodb, generate the excel files, Word document & lables for printing.",
+    "author": {
+        "name": "Vedaprakash M S",
+        "email": "vedaprakash.ms@outlook.com",
+        "url": "https://github.com/vedaprakashms"
+    },
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "electron:build": "vue-cli-service electron:build",
+        "electron:serve": "vue-cli-service electron:serve",
+        "iconBuilder": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
+        "iconBuilder2": "electron-icon-builder --input=./public/notebook.png --output=build --flatten",
+        "postinstall": "electron-builder install-app-deps",
+        "postuninstall": "electron-builder install-app-deps"
+    },
+    "main": "background.js",
+    "dependencies": {
+        "@electron/remote": "^1.1.0",
+        "@fortawesome/fontawesome-svg-core": "^1.2.35",
+        "@fortawesome/free-brands-svg-icons": "^5.15.3",
+        "@fortawesome/free-regular-svg-icons": "^5.15.3",
+        "@fortawesome/free-solid-svg-icons": "^5.15.3",
+        "@fortawesome/vue-fontawesome": "^3.0.0-3",
+        "@tailwindcss/postcss7-compat": "^2.0.2",
+        "autoprefixer": "^9",
+        "axios": "^0.21.1",
+        "core-js": "^3.6.5",
+        "express": "^4.17.1",
+        "jsbarcode": "^3.11.4",
+        "mongodb-client-encryption": "^1.2.3",
+        "mongoose": "^5.12.10",
+        "postcss": "^7",
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
+        "vue": "^3.0.0",
+        "vue-router": "^4.0.0-0",
+        "vuex": "^4.0.0-0"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "~4.5.0",
+        "@vue/cli-plugin-eslint": "~4.5.0",
+        "@vue/cli-plugin-router": "~4.5.0",
+        "@vue/cli-plugin-vuex": "~4.5.0",
+        "@vue/cli-service": "~4.5.0",
+        "@vue/compiler-sfc": "^3.0.0",
+        "@vue/eslint-config-prettier": "^6.0.0",
+        "babel-eslint": "^10.1.0",
+        "electron": "^12.0.0",
+        "electron-devtools-installer": "^3.2.0",
+        "eslint": "^6.7.2",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-vue": "^7.0.0",
+        "lint-staged": "^9.5.0",
+        "prettier": "^2.2.1",
+        "sass": "^1.26.5",
+        "sass-loader": "^8.0.2",
+        "stylelint": "^13.13.1",
+        "stylelint-config-standard": "^22.0.0",
+        "vue-cli-plugin-electron-builder": "~2.0.0",
+        "vue-cli-plugin-tailwind": "~2.0.6",
+        "vue-cli-plugin-vuetify": "~2.4.0"
+    },
+    "gitHooks": {
+        "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+        "*.{js,jsx,vue}": [
+            "vue-cli-service lint",
+            "git add"
+        ]
+    }
 }
