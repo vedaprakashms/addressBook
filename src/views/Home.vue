@@ -170,7 +170,9 @@
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@/components/HelloWorld.vue'
-import axios from 'axios'
+// import axios from 'axios'
+import mongoose from 'mongoose'
+import address from '../model/addressModel'
 export default {
     name: 'Home',
     data: () => {
@@ -200,14 +202,28 @@ export default {
         entry() {
             var k = this.address
             console.log(k)
-            axios({
-                url: 'http://localhost:3000/address',
-                method: 'POST',
-                data: this.address,
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                },
-            }).then(console.log)
+            mongoose
+                .connect('mongodb://localhost/addressbook', {
+                    useNewUrlParser: true,
+                    useUnifiedTopology: true,
+                })
+                .then((r) => {
+                    console.log(r)
+                    address(k)
+                        .save()
+                        .then((t) => {
+                            console.log(t._doc)
+                        })
+                })
+
+            // axios({
+            //     url: 'http://localhost:3000/address',
+            //     method: 'POST',
+            //     data: this.address,
+            //     headers: {
+            //         'Access-Control-Allow-Origin': '*',
+            //     },
+            // }).then(console.log)
         },
     },
 }

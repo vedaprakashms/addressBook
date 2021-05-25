@@ -21,7 +21,7 @@
             "
         >
             <img
-                src="../assets/notebook.png"
+                src="../assets/book.svg"
                 height="16"
                 width="20"
                 class="clickto"
