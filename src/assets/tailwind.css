@@ -5,3 +5,11 @@
 .inputClass {
     @apply rounded px-1 py-2 border-0 focus:ring w-full placeholder-gray-400 text-lg text-black font-semibold uppercase;
 }
+
+.card {
+    @apply rounded bg-white border-gray-200 shadow-md overflow-hidden relative;
+}
+
+.badge {
+    @apply absolute top-0 ml-2 p-2 mt-2 bg-secondary-100 text-gray-700 text-xs uppercase font-bold rounded-full;
+}
