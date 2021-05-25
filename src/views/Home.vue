@@ -182,7 +182,7 @@ export default {
                 lname: '',
                 surname: '',
                 mobile1: null,
-                Mobile2: null,
+                mobile2: null,
                 landline: null,
                 doorNo: null,
                 houseName: '',
