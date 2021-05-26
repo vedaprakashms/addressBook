@@ -18,9 +18,11 @@ export default {
 
 <style lang="scss" scoped>
 .tiptop {
-    height: 4vh;
-    border: 1px;
-    border-style: dotted;
+    @media screen and (min-width: 768px) {
+        height: 4vh;
+        border: 1px;
+        border-style: dotted;
+    }
 }
 #nav {
     a {

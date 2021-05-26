@@ -1,15 +1,36 @@
 <template>
     <div class="text-yellow-100">
-        <div class="flex justify-center text-3xl">
-            <h1 class="">Address Lists</h1>
+        <div class="grid md:grid-cols-5 gap-2 text-3xl">
+            <h1 class="col-span-3 flex justify-center">Address Lists</h1>
+            <input
+                type="text"
+                class="inputClass m-1 sm: col-span-5 md:col-span-4 px-2 my-3"
+                placeholder="Searchbox"
+            />
+            <button
+                type="button"
+                class="
+                    px-3
+                    py-3
+                    my-3
+                    sm:
+                    col-span-5
+                    md:col-span-1 md:col-start-5
+                    rounded
+                    w-full
+                    bg-gradient-to-r
+                    from-red-500
+                    via-green-600
+                    to-yellow-400
+                    text-gray-100 text-xl
+                    font-bold
+                "
+                @click="printpage(abc)"
+            >
+                Label Print
+            </button>
         </div>
-        <button
-            type="button"
-            class="flex justify-center text-3xl"
-            @click="printpage(abc)"
-        >
-            Print Form
-        </button>
+
         <div v-if="!returnval.length" class="flex justify-center text-3xl">
             No Data found, please enter address in the Address entry form
         </div>
@@ -20,6 +41,7 @@
                 :Address="value"
                 v-for="value in returnval"
                 :key="value._id"
+                @click="clickval(value._id)"
             />
         </div>
     </div>
@@ -28,6 +50,7 @@
 import { ref } from 'vue'
 import mongoose from 'mongoose'
 import address from '../model/addressModel'
+import router from '@/router'
 import AddressCard from '@/components/AddressCard.vue'
 import * as remote from '@electron/remote'
 import fs from 'fs'
@@ -69,7 +92,6 @@ export default {
                         d.getMinutes() +
                         '-' +
                         d.getSeconds() +
-                        '-' +
                         '.pdf',
                 })
                 .then((pdfPath) => {
@@ -106,7 +128,13 @@ export default {
                 })
         }
 
-        return { returnval, db, printpage }
+        const clickval = function (id) {
+            //alert('Clicked Card with ID ' + id)
+            var k = id.toHexString()
+            router.push({ path: `/addressmodify/${k}` })
+        }
+
+        return { returnval, db, printpage, clickval }
     },
     mounted() {
         this.db()

@@ -77,6 +77,8 @@ export default {
 
 <style lang="scss" scoped>
 .tiptop {
-    height: 4vh;
+    @media screen and (min-width: 768px) {
+        height: 4vh;
+    }
 }
 </style>
