@@ -1,11 +1,19 @@
 <template>
     <div class="card hover:shadow-lg border-purple-900 border-4 text-black">
         <div class="pl-1 h-36">
-            <span class="font-bold text-black overflow-auto">
+            <span class="font-bold text-black overflow-auto uppercase">
                 {{ Address.fname }} {{ Address.lname }} {{ Address.surname }}
             </span>
-            <span class="block text-gray-700 text-sm font-semibold flex-wrap">
-                Door NO: {{ Address.doorNo }}, {{ Address.houseName }},
+            <span
+                class="
+                    block
+                    text-gray-700 text-sm
+                    font-semibold
+                    flex-wrap
+                    uppercase
+                "
+            >
+                {{ Address.doorNo }}, {{ Address.houseName }},
                 {{ Address.streetName }}, {{ Address.road }},
                 {{ Address.area }}, {{ Address.landmark }},{{ Address.city }},{{
                     Address.state
@@ -13,8 +21,16 @@
                 {{ Address.pincode }}
             </span>
 
-            <span class="block text-gray-700 font-semibold overflow-auto">
-                Mobile|Phone : {{ Address.mobile1 }} | {{ Address.mobile2 }} |
+            <span
+                class="
+                    block
+                    text-gray-700
+                    font-semibold
+                    overflow-auto
+                    uppercase
+                "
+            >
+                Mobile: {{ Address.mobile1 }} | {{ Address.mobile2 }} |
                 {{ Address.landline }}
             </span>
         </div>

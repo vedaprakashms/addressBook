@@ -31,7 +31,6 @@ import address from '../model/addressModel'
 import AddressCard from '@/components/AddressCard.vue'
 import * as remote from '@electron/remote'
 import fs from 'fs'
-import path from 'path'
 //import printJS from 'print-js'
 export default {
     setup() {
@@ -56,32 +55,54 @@ export default {
         }
 
         const printpage = () => {
-            // printJS({
-            //     printable: 'abc',
-            //     type: 'html',
-            //     targetStyles: ['*'],
-            //     style: '@page {size: A4 landscape;}',
-            // })
-            remote
-                .getCurrentWindow()
-                .webContents.printToPDF({
-                    marginsType: 0,
-                    printBackground: false,
-                    printSelectionOnly: false,
-                    landscape: true,
-                    pageSize: 'A4',
-                    scaleFactor: 100,
+            var d = new Date()
+            remote.dialog
+                .showSaveDialog({
+                    title: 'Save PDF',
+                    defaultPath:
+                        'Addersslist' +
+                        '_' +
+                        d.toDateString() +
+                        '-' +
+                        d.getHours() +
+                        '-' +
+                        d.getMinutes() +
+                        '-' +
+                        d.getSeconds() +
+                        '-' +
+                        '.pdf',
                 })
-                .then((data) => {
-                    const pdfPath = path.join(
-                        remote.app.getPath('documents'),
-                        'temp.pdf'
-                    )
-                    fs.writeFile(pdfPath, data, (error) => {
-                        if (error) throw error
-                        console.log(`Wrote PDF successfully to ${pdfPath}`)
-                        alert(`Wrote PDF successfully to ${pdfPath}`)
-                    })
+                .then((pdfPath) => {
+                    if (!pdfPath.canceled) {
+                        remote
+                            .getCurrentWindow()
+                            .webContents.printToPDF({
+                                marginsType: 0,
+                                printBackground: false,
+                                printSelectionOnly: false,
+                                landscape: true,
+                                pageSize: 'A4',
+                                scaleFactor: 100,
+                            })
+                            .then((data) => {
+                                fs.writeFile(
+                                    pdfPath.filePath,
+                                    data,
+                                    (error) => {
+                                        if (error) throw error
+                                        console.log(
+                                            `Wrote PDF successfully to ${pdfPath.filePath}`
+                                        )
+                                        // alert(
+                                        //     `Wrote PDF successfully to ${pdfPath.filePath}`
+                                        // )
+                                        remote.shell.openPath(pdfPath.filePath)
+                                    }
+                                )
+                            })
+                    } else {
+                        alert('No File Name Given / File location selected!!!')
+                    }
                 })
         }
 
