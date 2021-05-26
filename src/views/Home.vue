@@ -53,7 +53,7 @@
                 type="text"
                 class="inputClass sm: col-span-3 md:col-span-1"
                 placeholder="Mobile 2"
-                v-model="address.Mobile2"
+                v-model="address.mobile2"
             />
             <input
                 type="text"
@@ -215,15 +215,6 @@ export default {
                             console.log(t._doc)
                         })
                 })
-
-            // axios({
-            //     url: 'http://localhost:3000/address',
-            //     method: 'POST',
-            //     data: this.address,
-            //     headers: {
-            //         'Access-Control-Allow-Origin': '*',
-            //     },
-            // }).then(console.log)
         },
     },
 }

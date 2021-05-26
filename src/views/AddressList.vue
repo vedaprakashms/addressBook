@@ -1,23 +1,38 @@
 <template>
-    <div class="text-yellow-100 grid md:grid-cols-4 gap-2">
-        <div class="flex justify-center col-span-4 text-3xl" @click="print">
+    <div class="text-yellow-100">
+        <div class="flex justify-center text-3xl">
             <h1 class="">Address Lists</h1>
         </div>
-        <AddressCard
-            :Address="value"
-            v-for="value in returnval"
-            :key="value._id"
-        />
+        <button
+            type="button"
+            class="flex justify-center text-3xl"
+            @click="printpage(abc)"
+        >
+            Print Form
+        </button>
+        <div v-if="!returnval.length" class="flex justify-center text-3xl">
+            No Data found, please enter address in the Address entry form
+        </div>
+        <div class="grid md:grid-cols-3 gap-2" id="abc">
+            <AddressCard
+                id="pds"
+                class="col-span-1"
+                :Address="value"
+                v-for="value in returnval"
+                :key="value._id"
+            />
+        </div>
     </div>
 </template>
 <script>
 import { ref } from 'vue'
 import mongoose from 'mongoose'
-import * as remote from '@electron/remote'
-import path from 'path'
-import fs from 'fs'
 import address from '../model/addressModel'
 import AddressCard from '@/components/AddressCard.vue'
+import * as remote from '@electron/remote'
+import fs from 'fs'
+import path from 'path'
+//import printJS from 'print-js'
 export default {
     setup() {
         var returnval = ref([])
@@ -40,8 +55,13 @@ export default {
                 })
         }
 
-        const print = () => {
-            var d = new Date()
+        const printpage = () => {
+            // printJS({
+            //     printable: 'abc',
+            //     type: 'html',
+            //     targetStyles: ['*'],
+            //     style: '@page {size: A4 landscape;}',
+            // })
             remote
                 .getCurrentWindow()
                 .webContents.printToPDF({
@@ -55,22 +75,17 @@ export default {
                 .then((data) => {
                     const pdfPath = path.join(
                         remote.app.getPath('documents'),
-                        'temp ' +
-                            d.toString().substring(0, 15) +
-                            ' ' +
-                            d.getHours() +
-                            d.getMinutes() +
-                            d.getSeconds() +
-                            '.pdf'
+                        'temp.pdf'
                     )
                     fs.writeFile(pdfPath, data, (error) => {
                         if (error) throw error
                         console.log(`Wrote PDF successfully to ${pdfPath}`)
+                        alert(`Wrote PDF successfully to ${pdfPath}`)
                     })
                 })
         }
 
-        return { returnval, db, print }
+        return { returnval, db, printpage }
     },
     mounted() {
         this.db()
@@ -81,4 +96,22 @@ export default {
     },
 }
 </script>
-<style></style>
+<style>
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #abc,
+    #abc * {
+        visibility: visible;
+    }
+    #abc {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #pds {
+        page-break-inside: avoid;
+    }
+}
+</style>

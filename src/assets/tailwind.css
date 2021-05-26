@@ -7,7 +7,7 @@
 }
 
 .card {
-    @apply rounded bg-white border-gray-200 shadow-md overflow-hidden relative;
+    @apply rounded bg-white border-black shadow-md overflow-auto relative;
 }
 
 .badge {

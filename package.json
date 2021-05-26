@@ -1,6 +1,6 @@
 {
     "name": "addressbook",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "private": true,
     "description": "An applications which can store address in a local instance of mongodb, generate the excel files, Word document & lables for printing.",
     "author": {
@@ -35,6 +35,7 @@
         "jsbarcode": "^3.11.4",
         "mongoose": "^5.12.10",
         "postcss": "^7",
+        "print-js": "^1.6.0",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
         "vue": "^3.0.0",
         "vue-router": "^4.0.0-0",
