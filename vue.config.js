@@ -3,7 +3,12 @@ module.exports = {
         electronBuilder: {
             nodeIntegration: true,
             nodeGypRebuild: true,
-            externals: ['mongoose', 'mongodb'],
+            externals: [
+                'mongoose',
+                'mongodb',
+                'vue3-qrcode-reader',
+                'vue-toastification',
+            ],
             homepage: 'https://github.com/vedaprakashms',
             builderOptions: {
                 // options placed here will be merged with default configuration and passed to electron-builder

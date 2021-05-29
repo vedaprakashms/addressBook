@@ -73,8 +73,11 @@ export default {
             },
         },
     },
-    mounted() {
-        JsBarcode('#code128').init()
+    mounted() {},
+    methods: {
+        initJscode() {
+            JsBarcode('#code128').init()
+        },
     },
 }
 </script>

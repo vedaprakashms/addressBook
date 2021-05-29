@@ -33,14 +33,21 @@ const routes = [
     },
     {
         path: '/Miscellaneous',
-        name: 'Miscellaneous Functions',
+        name: 'Scan QR',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
-            import(
-                /* webpackChunkName: "about" */ '../views/Miscellaneous.vue'
-            ),
+            import(/* webpackChunkName: "about" */ '../views/ScanQr.vue'),
+    },
+    {
+        path: '/Miscellaneous2',
+        name: 'Scan QR2',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import(/* webpackChunkName: "about" */ '../views/QRScan.vue'),
     },
     {
         path: '/about',

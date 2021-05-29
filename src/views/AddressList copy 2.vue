@@ -1,5 +1,5 @@
 <template>
-    <div class="text-yellow-100 block">
+    <div class="text-yellow-100">
         <div class="grid md:grid-cols-5 gap-2 text-3xl">
             <h1 class="col-span-5 flex justify-center">Address Lists</h1>
             <input
@@ -35,18 +35,15 @@
             No Data found, please enter address in the Address entry form
         </div>
 
-        <div id="abc">
-            <div class="block p-1">
-                <div
-                    class="inline-block p-1"
-                    style="width: 33%"
-                    v-for="value in returnval"
-                    :key="value._id"
-                    @click="clickval(value._id)"
-                >
-                    <AddressCard :Address="value"></AddressCard>
-                </div>
-            </div>
+        <div class="grid md:grid-flow-row md:grid-cols-3 gap-1" id="abc">
+            <AddressCard
+                :id="i % 8 == 0 ? 'pagebreak' : ''"
+                class="col-span-1"
+                :Address="value"
+                v-for="(value, i) in returnval"
+                :key="value._id"
+                @click="clickval(value._id)"
+            />
         </div>
     </div>
 </template>
@@ -103,7 +100,7 @@ export default {
                         remote
                             .getCurrentWindow()
                             .webContents.printToPDF({
-                                marginsType: 0,
+                                marginsType: 1,
                                 printBackground: false,
                                 printSelectionOnly: false,
                                 landscape: true,
@@ -134,8 +131,8 @@ export default {
 
         const clickval = function (id) {
             //alert('Clicked Card with ID ' + id)
-            //var k = id.toHexString()
-            router.push({ path: `/addressmodify/${id}` })
+            var k = id.toHexString()
+            router.push({ path: `/addressmodify/${k}` })
         }
 
         return { returnval, db, printpage, clickval }
@@ -165,9 +162,6 @@ export default {
         position: absolute;
         left: 0;
         top: 0;
-    }
-    div div {
-        page-break-inside: avoid;
     }
 }
 </style>

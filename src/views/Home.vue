@@ -172,6 +172,7 @@
 //import HelloWorld from '@/components/HelloWorld.vue'
 // import axios from 'axios'
 import mongoose from 'mongoose'
+import { useToast } from 'vue-toastification'
 import address from '../model/addressModel'
 export default {
     name: 'Home',
@@ -198,6 +199,10 @@ export default {
         }
     },
     components: {},
+    setup() {
+        const toast = useToast()
+        return { toast }
+    },
     methods: {
         entry() {
             var k = this.address
@@ -212,7 +217,16 @@ export default {
                     address(k)
                         .save()
                         .then((t) => {
-                            console.log(t._doc)
+                            console.log(t)
+                            this.toast.success(
+                                'Saved the info under ID: ' +
+                                    t._id.toHexString(),
+                                {
+                                    transition: 'Vue-Toastification__bounce',
+                                    maxToasts: 20,
+                                    newestOnTop: true,
+                                }
+                            )
                         })
                 })
         },

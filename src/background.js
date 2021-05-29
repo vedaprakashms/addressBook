@@ -14,6 +14,7 @@ protocol.registerSchemesAsPrivileged([
     { scheme: 'scheme2', privileges: { standard: true, secure: true } },
 ])
 app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors')
+app.commandLine.appendSwitch('ignore-certificate-errors')
 
 async function createWindow() {
     // Create the browser window.

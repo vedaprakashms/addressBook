@@ -33,12 +33,17 @@
         "core-js": "^3.6.5",
         "express": "^4.17.1",
         "jsbarcode": "^3.11.4",
+        "jsqr": "^1.4.0",
         "mongoose": "^5.12.10",
         "postcss": "^7",
         "print-js": "^1.6.0",
+        "qr-code-styling": "^1.4.0-rc1",
+        "qrcode": "^1.4.4",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
         "vue": "^3.0.0",
         "vue-router": "^4.0.0-0",
+        "vue-toastification": "^2.0.0-rc.1",
+        "vue3-qrcode-reader": "^0.0.1",
         "vuex": "^4.0.0-0"
     },
     "devDependencies": {
