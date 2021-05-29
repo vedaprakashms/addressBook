@@ -2,7 +2,7 @@
     <div class="card hover:shadow-lg text-black h-56" id="ajd">
         <div class="print:text-black m-1">
             <div class="" style="width: 60%">
-                <span class="font-bold text-black uppercase">
+                <span class="font-bold text-black">
                     {{ Address.fname }} {{ Address.lname }}
                     {{ Address.surname }}
                 </span>
@@ -11,7 +11,6 @@
                         inline-block
                         text-gray-700 text-sm
                         font-semibold
-                        uppercase
                         text-justify
                         print:text-black
                     "

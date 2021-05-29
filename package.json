@@ -1,6 +1,6 @@
 {
     "name": "addressbook",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "private": true,
     "description": "An applications which can store address in a local instance of mongodb, generate the excel files, Word document & lables for printing.",
     "author": {

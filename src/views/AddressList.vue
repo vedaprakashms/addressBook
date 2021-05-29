@@ -6,6 +6,7 @@
                 type="text"
                 class="inputClass m-1 sm: col-span-5 md:col-span-4 px-2 my-3"
                 placeholder="Searchbox"
+                v-model="search"
             />
             <button
                 type="button"
@@ -40,7 +41,7 @@
                 <div
                     class="inline-block p-1"
                     style="width: 33%"
-                    v-for="value in returnval"
+                    v-for="value in filteredBlogs"
                     :key="value._id"
                     @click="clickval(value._id)"
                 >
@@ -62,6 +63,7 @@ import fs from 'fs'
 export default {
     setup() {
         var returnval = ref([])
+        var search = ref()
         const db = async () => {
             await mongoose
                 .connect('mongodb://localhost/addressbook', {
@@ -138,7 +140,7 @@ export default {
             router.push({ path: `/addressmodify/${id}` })
         }
 
-        return { returnval, db, printpage, clickval }
+        return { returnval, db, printpage, clickval, search }
     },
     mounted() {
         console.log('page mounted')
@@ -148,6 +150,23 @@ export default {
     },
     components: {
         AddressCard,
+    },
+    computed: {
+        filteredBlogs: function () {
+            console.log(this.returnval)
+            console.log(this.search)
+            return (
+                this.returnval.filter((blog) => {
+                    return blog.fname.match(this.search)
+                }) ||
+                this.returnval.filter((blog) => {
+                    return blog.lname.match(this.search)
+                }) ||
+                this.returnval.filter((blog) => {
+                    return blog.surname.match(this.search)
+                })
+            )
+        },
     },
 }
 </script>
