@@ -105,7 +105,7 @@ export default {
                         remote
                             .getCurrentWindow()
                             .webContents.printToPDF({
-                                marginsType: 0,
+                                marginsType: 1,
                                 printBackground: false,
                                 printSelectionOnly: false,
                                 landscape: true,

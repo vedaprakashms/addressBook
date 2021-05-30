@@ -28,7 +28,7 @@
             </button>
         </div>
 
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-2 gap-2 m-2">
             <canvas id="canvas" class="col-span-1"></canvas>
             <div class="col-span-1 col-start-2 text-white text-center">
                 placeholder for address verification
@@ -194,12 +194,8 @@ export default {
                     this.lastscan = this.currentscan
                     console.log('Found QR code', code.data)
                     console.log(code.data)
-                    this.toast.success(code.data, {
-                        transition: 'Vue-Toastification__bounce',
-                        maxToasts: 20,
-                        newestOnTop: true,
-                    })
-                    this.entry(code.data).then(console.log)
+
+                    this.entry(code.data)
                 }
 
                 this.drawLine(
@@ -238,29 +234,42 @@ export default {
             canvas.stroke()
         },
         async entry(id) {
-            var k
-
             await mongoose
                 .connect('mongodb://localhost/addressbook', {
                     useNewUrlParser: true,
                     useUnifiedTopology: true,
                 })
                 .then(() => {
-                    address.findById(id).then((o) => {
-                        console.log(o._doc)
-                        this.address = o._doc
-                        k = Promise.resolve('found address')
-                    })
+                    address
+                        .findById(id)
+                        .then((o) => {
+                            console.log(o)
+                            this.address = o._doc
+                            this.toast.success(o._id.toHexString(), {
+                                transition: 'Vue-Toastification__bounce',
+                                maxToasts: 20,
+                                newestOnTop: false,
+                            })
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                            this.toast.error(
+                                'Did not find the address, Due to Error: ' +
+                                    err,
+                                {
+                                    transition: 'Vue-Toastification__bounce',
+                                    maxToasts: 20,
+                                    newestOnTop: false,
+                                }
+                            )
+                        })
                 })
                 .catch((err) => {
                     console.log(err)
-                    k = Promise.reject('Did not find address')
                 })
                 .finally(() => {
                     console.log(this.address)
                 })
-
-            return k
         },
     },
     mounted() {
