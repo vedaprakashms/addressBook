@@ -6,6 +6,7 @@ node_modules
 
 
 
+
 # local env files
 .env.local
 .env.*.local
@@ -27,3 +28,4 @@ pnpm-debug.log*
 
 #Electron-builder output
 /dist_electron
+/dist_electron_1

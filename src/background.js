@@ -12,6 +12,7 @@ require('@electron/remote/main').initialize()
 protocol.registerSchemesAsPrivileged([
     { scheme: 'scheme1', privileges: { standard: true, secure: true } },
     { scheme: 'scheme2', privileges: { standard: true, secure: true } },
+    { scheme: 'app', privileges: { secure: true, standard: true } },
 ])
 app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors')
 app.commandLine.appendSwitch('ignore-certificate-errors')
