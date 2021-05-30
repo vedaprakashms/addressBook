@@ -1,17 +1,17 @@
 <template>
-    <div class="card hover:shadow-lg text-black h-56" id="ajd">
+    <div class="card hover:shadow-lg text-black h-44">
         <div class="print:text-black m-1">
-            <div class="" style="width: 60%">
-                <span class="font-bold text-black">
+            <div class="" style="width: 70%">
+                <span class="font-bold text-black overflow-x-hidden">
                     {{ Address.fname }} {{ Address.lname }}
                     {{ Address.surname }}
                 </span>
                 <span
                     class="
                         inline-block
+                        ow-anywhere
                         text-gray-700 text-sm
                         font-semibold
-                        text-justify
                         print:text-black
                     "
                 >
@@ -20,19 +20,8 @@
                     {{ Address.area }}, {{ Address.landmark }},{{
                         Address.city
                     }},{{ Address.state }}, {{ Address.country }}, PINCODE :
-                    {{ Address.pincode }}.
-                </span>
-                <span
-                    class="
-                        inline-block
-                        text-gray-700
-                        font-semibold
-                        overflow-auto
-                        text-justify
-                        print:text-black
-                    "
-                >
-                    Mobile: {{ Address.mobile1 }} | {{ Address.mobile2 }} |
+                    {{ Address.pincode }}. Mobile: {{ Address.mobile1 }} |
+                    {{ Address.mobile2 }} |
                     {{ Address.landline }}
                 </span>
             </div>
@@ -41,7 +30,7 @@
             </div> -->
             <div
                 :id="Address._id.toHexString()"
-                class="absolute bottom-0 right-0"
+                class="absolute top-0 right-0 p-1"
             ></div>
         </div>
     </div>
@@ -118,14 +107,14 @@ export default {
                 qrOptions: {
                     typeNumber: '0',
                     mode: 'Byte',
-                    errorCorrectionLevel: 'L',
+                    errorCorrectionLevel: 'H',
                 },
                 imageOptions: {
                     hideBackgroundDots: true,
                     imageSize: 1,
                     margin: 0,
                 },
-                dotsOptions: { type: 'dots', color: '#000000', gradient: null },
+                dotsOptions: { type: 'dots', color: '#ffff00', gradient: null },
                 backgroundOptions: { color: '#ffffff' },
                 image: null,
                 dotsOptionsHelper: {
@@ -185,9 +174,12 @@ export default {
 </script>
 
 <style scoped>
-@media print {
+/* @media print {
     #ajd {
         page-break-before: always;
     }
+} */
+.ow-anywhere {
+    overflow-wrap: anywhere;
 }
 </style>

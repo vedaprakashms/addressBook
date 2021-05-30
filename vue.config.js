@@ -23,11 +23,11 @@ module.exports = {
                     target: [
                         {
                             target: 'nsis',
-                            arch: ['x64', 'ia32'],
+                            arch: ['x64'],
                         },
                         {
                             target: 'portable',
-                            arch: ['ia32', 'x64'],
+                            arch: ['x64'],
                         },
                         '7z',
                     ],

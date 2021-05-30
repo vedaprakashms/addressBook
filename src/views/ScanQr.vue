@@ -31,7 +31,7 @@
         <div class="grid grid-cols-2 gap-2 m-2">
             <canvas id="canvas" class="col-span-1"></canvas>
             <div class="col-span-1 col-start-2 text-white text-center">
-                placeholder for address verification
+                <AddressCardScanQr :Address="address"> </AddressCardScanQr>
             </div>
         </div>
     </div>
@@ -41,6 +41,7 @@
 import { useToast } from 'vue-toastification'
 import mongoose from 'mongoose'
 import address from '../model/addressModel'
+import AddressCardScanQr from '@/components/AddressCardScanQr.vue'
 import jsQR from 'jsqr'
 export default {
     data() {
@@ -77,7 +78,9 @@ export default {
         const toast = useToast()
         return { toast }
     },
-    components: {},
+    components: {
+        AddressCardScanQr,
+    },
     methods: {
         stopVideo: function () {
             if (typeof this.currentStream !== 'undefined') {
@@ -245,11 +248,7 @@ export default {
                         .then((o) => {
                             console.log(o)
                             this.address = o._doc
-                            this.toast.success(o._id.toHexString(), {
-                                transition: 'Vue-Toastification__bounce',
-                                maxToasts: 20,
-                                newestOnTop: false,
-                            })
+                            this.toast.success(o._id.toHexString())
                         })
                         .catch((err) => {
                             console.log(err)
@@ -282,6 +281,13 @@ export default {
         navigator.mediaDevices.enumerateDevices().then((r) => {
             this.gotDevices(r)
         })
+    },
+    beforeUnmount() {
+        if (typeof this.currentStream !== 'undefined') {
+            this.currentStream.getTracks().forEach((t) => {
+                t.stop()
+            })
+        }
     },
 }
 </script>

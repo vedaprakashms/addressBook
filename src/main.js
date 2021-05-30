@@ -12,11 +12,11 @@ import Toast from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 const options = {
     position: 'bottom-left',
-    timeout: 7016,
+    timeout: 1000,
     closeOnClick: true,
     transition: 'Vue-Toastification__fade',
     maxToasts: 30,
-    newestOnTop: true,
+    newestOnTop: false,
 }
 library.add(fas, fab)
 createApp(App)
